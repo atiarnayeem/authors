@@ -6,12 +6,9 @@ import { FavoriteAuthorsComponent } from './favorite-authors/favorite-authors.co
 import { RouterModule, Routes } from '@angular/router';
 import { AppModule } from 'src/app/app.module';
 import { ListItemModule } from 'src/app/shared/components/list-item/list-item.module';
+import { SidebarModule } from '../../navigation/sidebar/sidebar.module';
 
 const appRoutes: Routes = [
-  {
-    path: '',
-    component: AuthorsComponent
-  },
   {
     path: 'authors',
     component: AllAuthorsComponent
@@ -27,7 +24,8 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(appRoutes),
-    ListItemModule
+    ListItemModule,
+    SidebarModule
   ],
 })
 export class AuthorsModule { }

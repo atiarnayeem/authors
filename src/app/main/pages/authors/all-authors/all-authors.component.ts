@@ -19,35 +19,24 @@ export class AllAuthorsComponent implements OnInit {
   }
 
   getAuthors(): void { 
-    // this.isLoading = true;
-    // this.service.getAllAuthors().subscribe(response=> {
-    //   this.isLoading = false;
-    //   this.authors = response.results;
-    //   this.authors.forEach(element => {
-    //     element.isFavorite = false;
-    //   });
-    //   console.log('response', this.authors)
-    // })
     this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
-    this.authors.forEach(element => {
-        element.isFavorite = false;
-      });
+
     console.log('authors', this.authors)
   }
   
   add(author: any) {
     author.isFavorite = true;
     // this.favoriteAuthors.push(author);
-    localStorage.setItem("datas", JSON.stringify(this.authors));
-    let data =JSON.parse(localStorage.getItem('datas') || '[]');
+    localStorage.setItem("authors", JSON.stringify(this.authors));
+    let data =JSON.parse(localStorage.getItem('authors') || '[]');
     console.log('storage data', data)
   }
   
   remove(author: any) {
     author.isFavorite = false;
-    localStorage.setItem("datas", JSON.stringify(this.favoriteAuthors));
+    localStorage.setItem("authors", JSON.stringify(this.authors));
     // console.log('functioncall2', author);
-    let data =JSON.parse(localStorage.getItem('datas') || '[]');
+    let data =JSON.parse(localStorage.getItem('authors') || '[]');
     console.log('storage data', data)
   }
 
