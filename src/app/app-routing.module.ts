@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
   {
-    path: '',
+    path: 'authors',
     loadChildren: () => import('../app/main/pages/authors/authors.module').then(m => m.AuthorsModule),
   },
 ];

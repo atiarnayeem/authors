@@ -1,0 +1,19 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    border: 3px solid lightgray;
+    flex-shrink: 1;
+}
+
+.favorite-authors {
+    border: 3px solid black;
+    display: flex;
+    /* flex-shrink: 2; */
+    flex-basis: 25%;
+}
+.all-authors {
+    border: 3px solid green;
+    flex-grow: 1;
+    flex-basis: 75%;
+    /* display: flex; */
+}
