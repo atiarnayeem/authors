@@ -11,6 +11,6 @@ export class AuthorsService {
   constructor(private http: HttpClient) {}
 
   getAllAuthors(): Observable<any> {
-    return this.http.get(`${environment.baseUrl}authors?limit=10&skip=20`);
+    return this.http.get(`${environment.baseUrl}authors?limit=5&skip=0`);
   }
 }

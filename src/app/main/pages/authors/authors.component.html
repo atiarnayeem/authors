@@ -1,12 +1,16 @@
 <!-- <p>authors works!</p> -->
-<div class="main">
+<!-- <div class="main">
   <div class="favorite-authors">
-    <h2>Author</h2>
-    <h3>Favorite Author</h3>
+    <app-favorite-authors></app-favorite-authors>
   </div>
   <div class="all-authors">
     <div *ngFor="let author of authors">
       <app-list-item [name]="author.name" [bio]="author.bio" [link]="author.link" (myClick)="firstFunction()" (myClick2)="secondFunction()"></app-list-item>
     </div>
   </div>
+</div> -->
+
+<div class="sidenav">
+  <a href="/authors">Author</a>
+  <a href="/favorite-authors">Favorite Author</a>
 </div>

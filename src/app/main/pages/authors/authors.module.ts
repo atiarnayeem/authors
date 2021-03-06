@@ -12,6 +12,14 @@ const appRoutes: Routes = [
     path: '',
     component: AuthorsComponent
   },
+  {
+    path: 'authors',
+    component: AllAuthorsComponent
+  },
+  {
+    path: 'favorite-authors',
+    component: FavoriteAuthorsComponent
+  },
 ];
 
 @NgModule({
