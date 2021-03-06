@@ -1,5 +1,4 @@
-<app-authors></app-authors>
-<div class="favorite-authors">
-    <h2>Author</h2>
-    <h3>Favorite Author</h3>
+<app-authors></app-authors> 
+<div class="favorite-authors" *ngFor="let author of favoriteAuthors">
+    <app-list-item *ngIf="author.isFavorite" [name]="author.name" [bio]="author.bio" [link]="author.link" [isFavorite]="author.isFavorite" (myClick)="add(author)" (myClick2)="remove(author)" ></app-list-item>
 </div>

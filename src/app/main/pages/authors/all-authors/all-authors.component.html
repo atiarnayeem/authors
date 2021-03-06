@@ -1,4 +1,5 @@
 <app-authors></app-authors>
+<div *ngIf="isLoading" class="loader"></div>
 <div class="all-authors" *ngFor="let author of authors">
-    <app-list-item [name]="author.name" [bio]="author.bio" ></app-list-item>
+    <app-list-item [name]="author.name" [bio]="author.bio" [link]="author.link" [isFavorite]="author.isFavorite" (myClick)="add(author)" (myClick2)="remove(author)"  ></app-list-item>
 </div>

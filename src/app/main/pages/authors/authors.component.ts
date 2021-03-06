@@ -7,27 +7,25 @@ import { AuthorsService } from '../../services/authors/authors.service';
   styleUrls: ['./authors.component.css']
 })
 export class AuthorsComponent implements OnInit {
-  authors: any;
+  authors:[] = [];
 
   constructor(private service: AuthorsService) { }
 
   ngOnInit(): void {
-    // this.getAuthors();
+    this.getAuthors();
   }
-
-  getAuthors(): void {
+  
+  getAuthors(): void { 
     this.service.getAllAuthors().subscribe(response=> {
       this.authors = response.results;
-      console.log('response', response.results)
+      // this.authors.forEach(element => {
+      //   element.isFavorite = false;
+      // });
+    localStorage.setItem("authors", JSON.stringify(this.authors));
+    // let data =JSON.parse(localStorage.getItem('authors') || '[]');
+    // console.log('storage data', data)
+    //   console.log('response', this.authors)
     })
-  }
-
-  firstFunction(): void {
-    console.log('add')
-  }
-
-  secondFunction(): void {
-    console.log('remove')
   }
   
 

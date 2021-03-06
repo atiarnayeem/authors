@@ -10,32 +10,26 @@ export class ListItemComponent implements OnInit {
   @Input() name?: string;
   @Input() bio?: string;
   @Input() link?: string;
+  @Input() isFavorite?: boolean;
 
   @Output() myClick = new EventEmitter();
   @Output() myClick2 = new EventEmitter();
-  // @Output() click? = new EventEmitter();
-  // @Output() click? = new EventEmitter();
-  // @Output() addFavorite = new EventEmitter();
-  // @Output() rmvFavorite = new EventEmitter();
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onMyClick(): void {
+  onMyClick(event: any): void {
     this.myClick.emit('clicked');
-    console.log('add', event)
+    // console.log('add', event)
   }
   
-  onMyClick2(): void {
+  onMyClick2(event: any): void {
     this.myClick2.emit('clicked');
-    console.log('remove', event)
+    // console.log('remove', event)
   }
   
-  // removeFavorite(event: MouseEvent): void {
-  //   console.log('remove', event)
-
-  // }
 
 }

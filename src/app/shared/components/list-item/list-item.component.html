@@ -1,7 +1,7 @@
 <div class="card">
     <div class="buttons">
-        <button (click)="onMyClick()">Remove Fvt</button>
-        <button (click2)="onMyClick2()">Add Fvt</button>
+        <button *ngIf="!isFavorite" (click)="onMyClick($event)">Add Fvt</button>
+        <button *ngIf="isFavorite" (click)="onMyClick2($event)">Remove Fvt</button>
     </div>
     <div class="container">
         <!-- <span>Name:</span> -->

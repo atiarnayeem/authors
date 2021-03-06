@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Author } from '../../models/authors.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorsService {
+
+  private subject = new BehaviorSubject(<Author[]>([]));
+  authors$: Observable<Author[]> = this.subject.asObservable();
+
+  // travelClaimData = new BehaviorSubject(null);
+
 
   constructor(private http: HttpClient) {}
 
