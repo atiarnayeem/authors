@@ -9,11 +9,11 @@ import { AuthorsService } from 'src/app/main/services/authors/authors.service';
 export class AllAuthorsComponent implements OnInit {
   hasData = false;
   isClickedNext = false;
+  isClickedPrevious = false;
   authors: any[] = [];
   likedAuthors: [] = [];
   lastItemIndex!: number;
   pageNumber = 0;
-  favoriteAuthors: any[] = JSON.parse(localStorage.getItem('authors') || '[]');
   constructor(private service: AuthorsService) {}
 
   ngOnInit(): void {
@@ -41,10 +41,11 @@ export class AllAuthorsComponent implements OnInit {
 
   onNext(): void {
     this.pageNumber += 1;
-    this.isClickedNext = true;
-    this.lastItemIndex == 0 ? this.lastItemIndex += 6 : this.lastItemIndex;
+    this.isClickedPrevious == true? this.lastItemIndex += 6 : this.lastItemIndex;
     this.service.getAllAuthors(6, this.lastItemIndex).subscribe((response) => {
       this.authors = response.results;
+      this.isClickedNext = true;
+      this.isClickedPrevious = false;
       this.lastItemIndex = response.lastItemIndex;
     });
   }
@@ -54,6 +55,7 @@ export class AllAuthorsComponent implements OnInit {
     this.isClickedNext  == true? this.lastItemIndex -= 12 : this.lastItemIndex -=6 ;
     this.service.getAllAuthors(6, this.lastItemIndex).subscribe((response) => {
       this.isClickedNext = false;
+      this.isClickedPrevious = true;
       this.authors = response.results;
     });
 

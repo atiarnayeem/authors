@@ -10,7 +10,7 @@
   ></app-list-item>
 </div>
 <div *ngIf="hasData" class="paginator">
-  <button style="margin-right: 10px;" class="previous" (click)="onPrev()">Previous</button>
+  <button [disabled]="pageNumber == 0" style="margin-right: 10px;" class="previous" (click)="onPrev()">Previous</button>
   <span>{{pageNumber}}</span>
   <button style="margin-left: 10px;" class="next" (click)="onNext()">Next</button>
 </div>
