@@ -7,7 +7,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppModule } from 'src/app/app.module';
 import { ListItemModule } from 'src/app/shared/components/list-item/list-item.module';
 import { SidebarModule } from '../../navigation/sidebar/sidebar.module';
-import { PaginatorModule } from 'src/app/shared/components/paginator/paginator.module';
 
 const appRoutes: Routes = [
   {
@@ -32,7 +31,6 @@ const appRoutes: Routes = [
     RouterModule.forChild(appRoutes),
     ListItemModule,
     SidebarModule,
-    PaginatorModule
   ],
 })
 export class AuthorsModule { }

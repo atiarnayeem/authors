@@ -11,7 +11,8 @@ export class AllAuthorsComponent implements OnInit {
   isClickedNext = false;
   authors: any[] = [];
   likedAuthors: [] = [];
-  lastItemIndex: any;
+  lastItemIndex!: number;
+  pageNumber = 0;
   favoriteAuthors: any[] = JSON.parse(localStorage.getItem('authors') || '[]');
   constructor(private service: AuthorsService) {}
 
@@ -38,7 +39,8 @@ export class AllAuthorsComponent implements OnInit {
     localStorage.setItem('authors', JSON.stringify(this.authors));
   }
 
-  onNext(event: any): void {
+  onNext(): void {
+    this.pageNumber += 1;
     this.isClickedNext = true;
     this.lastItemIndex == 0 ? this.lastItemIndex += 6 : this.lastItemIndex;
     this.service.getAllAuthors(6, this.lastItemIndex).subscribe((response) => {
@@ -47,7 +49,8 @@ export class AllAuthorsComponent implements OnInit {
     });
   }
   
-  onPrev(event: any): void {
+  onPrev(): void {
+    this.pageNumber -= 1;
     this.isClickedNext  == true? this.lastItemIndex -= 12 : this.lastItemIndex -=6 ;
     this.service.getAllAuthors(6, this.lastItemIndex).subscribe((response) => {
       this.isClickedNext = false;
