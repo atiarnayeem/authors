@@ -10,5 +10,6 @@
   ></app-list-item>
 </div>
 <div *ngIf="hasData" class="paginator">
-  <app-paginator></app-paginator>
+  <button class="previous" (click)="onPrev($event)">Previous</button>
+  <button class="next" (click)="onNext($event)">Next</button>
 </div>

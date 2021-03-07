@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FavoriteAuthorsComponent implements OnInit {
 
   hasData = false;
-  authors : any[] = [];
+  favoriteAuthors : any[] = [];
   constructor() { }
 
   ngOnInit(): void {
@@ -16,13 +16,13 @@ export class FavoriteAuthorsComponent implements OnInit {
   }
 
   getData(): any {
-    this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
+    this.favoriteAuthors = JSON.parse(localStorage.getItem('authors') || '[]');
     this.hasData = true;
   }
 
 
   remove(author: any) {
     author.isFavorite = false;
-    localStorage.setItem("authors", JSON.stringify(this.authors));
+    localStorage.setItem("authors", JSON.stringify(this.favoriteAuthors));
   }
 }

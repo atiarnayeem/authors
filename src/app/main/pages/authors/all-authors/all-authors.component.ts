@@ -1,59 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Author } from 'src/app/main/models/authors.model';
 import { AuthorsService } from 'src/app/main/services/authors/authors.service';
 
 @Component({
   selector: 'app-all-authors',
   templateUrl: './all-authors.component.html',
-  styleUrls: ['./all-authors.component.css']
+  styleUrls: ['./all-authors.component.css'],
 })
 export class AllAuthorsComponent implements OnInit {
   hasData = false;
+  isClickedNext = false;
   authors: any[] = [];
-  favoriteAuthors: any[] = [];  
-  constructor(private service: AuthorsService) { }
+  likedAuthors: [] = [];
+  lastItemIndex: any;
+  favoriteAuthors: any[] = JSON.parse(localStorage.getItem('authors') || '[]');
+  constructor(private service: AuthorsService) {}
 
   ngOnInit(): void {
-    this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
-    if (this.authors.length === 0) {
-      this.getAuthorsData()
-    } else {
-      this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
-      this.hasData = true;
-    }
+    this.getAuthorsData();
   }
 
   getAuthorsData(): void {
-    console.log('called')
     this.service.getAllAuthors().subscribe((response) => {
       this.authors = response.results;
-      localStorage.setItem('authors', JSON.stringify(this.authors));
+      this.lastItemIndex = response.lastItemIndex;
       this.hasData = true;
     });
   }
 
-  getAuthors(): void { 
-    this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
-  }
-  
+
   add(author: any) {
     author.isFavorite = true;
-    localStorage.setItem("authors", JSON.stringify(this.authors));
+    localStorage.setItem('authors', JSON.stringify(this.authors));
   }
-  
+
   remove(author: any) {
     author.isFavorite = false;
-    localStorage.setItem("authors", JSON.stringify(this.authors));
+    localStorage.setItem('authors', JSON.stringify(this.authors));
+  }
+
+  onNext(event: any): void {
+    this.isClickedNext = true;
+    this.lastItemIndex == 0 ? this.lastItemIndex += 6 : this.lastItemIndex;
+    this.service.getAllAuthors(6, this.lastItemIndex).subscribe((response) => {
+      this.authors = response.results;
+      this.lastItemIndex = response.lastItemIndex;
+    });
   }
   
-  next(author: any) {
-    author.isFavorite = true;
-    localStorage.setItem("authors", JSON.stringify(this.authors));
-  }
-  
-  prev(author: any) {
-    author.isFavorite = false;
-    localStorage.setItem("authors", JSON.stringify(this.authors));
+  onPrev(event: any): void {
+    this.isClickedNext  == true? this.lastItemIndex -= 12 : this.lastItemIndex -=6 ;
+    this.service.getAllAuthors(6, this.lastItemIndex).subscribe((response) => {
+      this.isClickedNext = false;
+      this.authors = response.results;
+    });
+
   }
 }

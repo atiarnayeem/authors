@@ -4,7 +4,7 @@
   width: 35%;
   display: inline-block;
   flex-direction: column;
-  margin-top: 10px;
+  margin: 10px 0 0  20px;
 }
 
 .card:hover {
@@ -13,6 +13,7 @@
 
 .container {
   padding: 2px 16px;
+  margin-bottom: 15px;
 }
 
 .buttons {
@@ -21,10 +22,10 @@
   
 }
 
-button:first-child {
+button {
   background-color: lightgray;
+  height: 35px;
+  cursor: pointer;
+  margin: 10px;
 }
 
-buttons:nth-child(2) {
-  background-color: tomato;
-}
