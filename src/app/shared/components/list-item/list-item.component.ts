@@ -12,8 +12,8 @@ export class ListItemComponent implements OnInit {
   @Input() link?: string;
   @Input() isFavorite?: boolean;
 
-  @Output() myClick = new EventEmitter();
-  @Output() myClick2 = new EventEmitter();
+  @Output() addFvt = new EventEmitter();
+  @Output() removeFvt = new EventEmitter();
 
 
   constructor() { }
@@ -21,14 +21,12 @@ export class ListItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onMyClick(event: any): void {
-    this.myClick.emit('clicked');
-    // console.log('add', event)
+  onAddFavorite(event: any): void {
+    this.addFvt.emit('clicked');
   }
   
-  onMyClick2(event: any): void {
-    this.myClick2.emit('clicked');
-    // console.log('remove', event)
+  onRemoveFavourite(event: any): void {
+    this.removeFvt.emit('clicked');
   }
   
 

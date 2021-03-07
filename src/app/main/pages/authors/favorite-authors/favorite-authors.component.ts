@@ -7,22 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteAuthorsComponent implements OnInit {
 
+  hasData = false;
   authors : any[] = [];
   constructor() { }
 
   ngOnInit(): void {
     this.getData();
   }
+
   getData(): any {
     this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
+    this.hasData = true;
   }
 
-  add(author: any) {
-    author.isFavorite = true;
-    this.authors.push(author);
-    localStorage.setItem("authors", JSON.stringify(this.authors));
-  }
-  
+
   remove(author: any) {
     author.isFavorite = false;
     localStorage.setItem("authors", JSON.stringify(this.authors));

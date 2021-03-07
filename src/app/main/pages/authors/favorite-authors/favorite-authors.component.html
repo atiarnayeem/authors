@@ -1,5 +1,15 @@
-<app-authors></app-authors> 
-<!-- <app-sidebar></app-sidebar> -->
+<app-sidebar></app-sidebar>
 <div class="favorite-authors" *ngFor="let author of authors">
-    <app-list-item *ngIf="author.isFavorite" [name]="author.name" [bio]="author.bio" [link]="author.link" [isFavorite]="author.isFavorite" (myClick)="add(author)" (myClick2)="remove(author)" ></app-list-item>
+    <app-list-item
+    *ngIf="author.isFavorite"
+    [name]="author.name"
+    [bio]="author.bio"
+    [link]="author.link"
+    [isFavorite]="author.isFavorite"
+    (removeFvt)="remove(author)"
+    ></app-list-item>
+</div>
+
+<div *ngIf="hasData" class="paginator">
+  <app-paginator></app-paginator>
 </div>

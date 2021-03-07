@@ -9,35 +9,51 @@ import { AuthorsService } from 'src/app/main/services/authors/authors.service';
   styleUrls: ['./all-authors.component.css']
 })
 export class AllAuthorsComponent implements OnInit {
-  isLoading = false;
+  hasData = false;
   authors: any[] = [];
   favoriteAuthors: any[] = [];  
   constructor(private service: AuthorsService) { }
 
   ngOnInit(): void {
-    this.getAuthors();
+    this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
+    if (this.authors.length === 0) {
+      this.getAuthorsData()
+    } else {
+      this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
+      this.hasData = true;
+    }
+  }
+
+  getAuthorsData(): void {
+    console.log('called')
+    this.service.getAllAuthors().subscribe((response) => {
+      this.authors = response.results;
+      localStorage.setItem('authors', JSON.stringify(this.authors));
+      this.hasData = true;
+    });
   }
 
   getAuthors(): void { 
     this.authors = JSON.parse(localStorage.getItem('authors') || '[]');
-
-    console.log('authors', this.authors)
   }
   
   add(author: any) {
     author.isFavorite = true;
-    // this.favoriteAuthors.push(author);
     localStorage.setItem("authors", JSON.stringify(this.authors));
-    let data =JSON.parse(localStorage.getItem('authors') || '[]');
-    console.log('storage data', data)
   }
   
   remove(author: any) {
     author.isFavorite = false;
     localStorage.setItem("authors", JSON.stringify(this.authors));
-    // console.log('functioncall2', author);
-    let data =JSON.parse(localStorage.getItem('authors') || '[]');
-    console.log('storage data', data)
   }
-
+  
+  next(author: any) {
+    author.isFavorite = true;
+    localStorage.setItem("authors", JSON.stringify(this.authors));
+  }
+  
+  prev(author: any) {
+    author.isFavorite = false;
+    localStorage.setItem("authors", JSON.stringify(this.authors));
+  }
 }

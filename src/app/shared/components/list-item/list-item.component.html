@@ -1,14 +1,19 @@
-<div class="card">
+<!-- <div style="margin-top: 10px; display: flex; flex-direction: row; align-items: center;"> -->
+  <div class="card">
     <div class="buttons">
-        <button *ngIf="!isFavorite" (click)="onMyClick($event)">Add Fvt</button>
-        <button *ngIf="isFavorite" (click)="onMyClick2($event)">Remove Fvt</button>
+      <button *ngIf="!isFavorite" (click)="onAddFavorite($event)">
+        Add Favorite
+      </button>
+      <button *ngIf="isFavorite" (click)="onRemoveFavourite($event)">
+        Remove Favorite
+      </button>
     </div>
     <div class="container">
-        <!-- <span>Name:</span> -->
-        <!-- <span>Bio:</span> -->
-      <h4><b>{{name}}</b></h4> 
-      <p>{{bio}}</p> 
-      <p>{{link}}</p> 
+      <h4>
+        <b>{{ name }}</b>
+      </h4>
+      <p>{{ bio }}</p>
+      <p>{{ link }}</p>
     </div>
-
   </div>
+<!-- </div> -->
