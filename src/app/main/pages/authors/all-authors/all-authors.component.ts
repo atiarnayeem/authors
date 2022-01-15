@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorData } from 'src/app/main/models/authors.model';
 import { AuthorsService } from 'src/app/main/services/authors/authors.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class AllAuthorsComponent implements OnInit {
   hasData = false;
   isClickedNext = false;
   isClickedPrevious = false;
-  authors: any[] = [];
+  authors: AuthorData[] = [];
   likedAuthors: [] = [];
   lastItemIndex!: number;
   pageNumber = 0;

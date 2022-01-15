@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorData } from 'src/app/main/models/authors.model';
 
 @Component({
   selector: 'app-favorite-authors',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteAuthorsComponent implements OnInit {
   hasData = false;
-  favoriteAuthors: any[] = [];
+  favoriteAuthors: AuthorData[] = [];
   constructor() {}
 
   ngOnInit(): void {
