@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="buttons">
+    <button *ngIf="!isFavorite" (click)="onAddFavorite($event)">
+      Add Favorite
+    </button>
+    <button *ngIf="isFavorite" (click)="onRemoveFavourite($event)">
+      Remove Favorite
+    </button>
+  </div>
+  <div class="container">
+    <h4>
+      <b>{{ name }}</b>
+    </h4>
+    <p>{{ bio }}</p>
+    <a href="{{ link }}" target="_blank">To know more</a>
+  </div>
+</div>

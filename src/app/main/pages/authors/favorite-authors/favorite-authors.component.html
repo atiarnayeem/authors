@@ -1,0 +1,12 @@
+<app-sidebar></app-sidebar>
+<div class="favorite-authors" *ngFor="let author of favoriteAuthors">
+    <app-list-item
+    *ngIf="author.isFavorite"
+    [name]="author.name"
+    [bio]="author.bio"
+    [link]="author.link"
+    [isFavorite]="author.isFavorite"
+    (removeFvt)="remove(author)"
+    ></app-list-item>
+</div>
+

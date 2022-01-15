@@ -1,0 +1,25 @@
+<app-sidebar></app-sidebar>
+<div class="all-authors" *ngFor="let author of authors">
+  <app-list-item
+    [name]="author.name"
+    [bio]="author.bio"
+    [link]="author.link"
+    [isFavorite]="author.isFavorite"
+    (addFvt)="add(author)"
+    (removeFvt)="remove(author)"
+  ></app-list-item>
+</div>
+<div *ngIf="hasData" class="paginator">
+  <button
+    [disabled]="pageNumber == 0"
+    style="margin-right: 10px"
+    class="previous"
+    (click)="onPrev()"
+  >
+    Previous
+  </button>
+  <span>{{ pageNumber }}</span>
+  <button style="margin-left: 10px" class="next" (click)="onNext()">
+    Next
+  </button>
+</div>
