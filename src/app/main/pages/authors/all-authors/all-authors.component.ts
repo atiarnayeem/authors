@@ -28,6 +28,7 @@ export class AllAuthorsComponent implements OnInit {
     });
   }
 
+
   add(author: any) {
     author.isFavorite = true;
     localStorage.setItem('authors', JSON.stringify(this.authors));
@@ -40,9 +41,7 @@ export class AllAuthorsComponent implements OnInit {
 
   onNext(): void {
     this.pageNumber += 1;
-    this.isClickedPrevious == true
-      ? (this.lastItemIndex += 6)
-      : this.lastItemIndex;
+    this.isClickedPrevious == true ? this.lastItemIndex += 6 : this.lastItemIndex;
     this.service.getAllAuthors(6, this.lastItemIndex).subscribe((response) => {
       this.authors = response.results;
       this.isClickedNext = true;
@@ -50,16 +49,15 @@ export class AllAuthorsComponent implements OnInit {
       this.lastItemIndex = response.lastItemIndex;
     });
   }
-
+  
   onPrev(): void {
     this.pageNumber -= 1;
-    this.isClickedNext == true
-      ? (this.lastItemIndex -= 12)
-      : (this.lastItemIndex -= 6);
+    this.isClickedNext  == true ? this.lastItemIndex -= 12 : this.lastItemIndex -=6 ;
     this.service.getAllAuthors(6, this.lastItemIndex).subscribe((response) => {
       this.isClickedNext = false;
       this.isClickedPrevious = true;
       this.authors = response.results;
     });
+
   }
 }

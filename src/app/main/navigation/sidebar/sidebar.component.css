@@ -1,6 +1,5 @@
 .sidenav {
   height: 100%;
-  /* width: 230px; */
   width: 11%;
   position: fixed;
   z-index: 1;
@@ -14,6 +13,7 @@
 .router-link-active {
   font-weight: bold;
   color: #fff;
+  background-color: #fff;
 }
 
 .sidenav a {
@@ -24,10 +24,3 @@
   display: block;
 }
 
-.sidenav a:hover {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #fff;
-  display: block;
-}
